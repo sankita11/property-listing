@@ -103,3 +103,6 @@ type Query {
 }
 
 ```
+
+# DB Diagram
+![Screenshot](Property-listing-DB.png)
