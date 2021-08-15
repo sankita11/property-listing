@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  database:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: property-rentals
+    ports:
+      - '54321:5432'
