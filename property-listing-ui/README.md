@@ -1,5 +1,6 @@
 # Property listing UI
-This is simple web interface for create, edit and list rental properties. This is built using React typescript
+This is simple web interface for create, edit and list rental properties. This is built using React typescript.
+It also use `@apollo/client` for intercating with GraphQL APIs
 
 ## Install Dependencies 
 
