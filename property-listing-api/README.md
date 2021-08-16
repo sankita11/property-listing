@@ -12,7 +12,7 @@ npm install
 ### 2. Install Docker and start the DB
 Click here to install Docker if not installed already https://docs.docker.com/engine/install/
 
-Run this after docker install
+Run this after docker install to start DB
 ```
 docker-compose up -d 
 ```
@@ -24,6 +24,17 @@ npm start
 
 The server should be running on ```http://localhost:4000/``` and graphql on ```http://localhost:4000/graphql```
 This will also migrate DB and create all tables
+
+# Testing
+
+### 1. Start test DB
+``` npm run start-test-db```
+
+### 2. Test 
+```npm test```
+
+### 3. Stop test DB( Ideally this should stop after running test automatically)
+```npm run stop-test-db```
 
 
 # GraphQL schema and type
