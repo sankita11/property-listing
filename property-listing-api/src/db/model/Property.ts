@@ -48,7 +48,7 @@ export class Property {
   @CreateDateColumn()
   createdAt: Date = new Date();
 
-  @Field(() => String, { description: "Updated property on this date" })
+  @Field(() => Date, { description: "Updated property on this date" })
   @UpdateDateColumn()
   updatedAt: Date = new Date();
 

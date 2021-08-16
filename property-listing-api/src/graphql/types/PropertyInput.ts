@@ -30,6 +30,9 @@ export class PropertyInputType implements Partial<Property> {
     @Field(() => String)
     propertyDescription!: string;
 
+    @Field(() => String)
+    coverImageUrl?: string;
+
     @Field(() => [PropertyFeatureInput])
     propertyFeatures!: PropertyFeatureInput[];
  

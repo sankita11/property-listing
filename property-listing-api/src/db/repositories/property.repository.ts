@@ -34,8 +34,6 @@ export const insertProperty = async ( propertyInput: PropertyInputType): Promise
         .values(propertyInput)
         .execute();
     
-        console.log(newProperty);
-    
         const propertyID: number = newProperty.identifiers[0].id
     
         await insertPropertyFeature(propertyID, propertyInput.propertyFeatures)

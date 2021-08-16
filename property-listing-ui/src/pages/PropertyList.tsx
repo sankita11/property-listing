@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { GET_PROPERTY_LIST } from '../grapql/Queries';
+import { GET_PROPERTY_LIST } from '../graphql/Queries';
 import { Property, PropertyType } from '../interfaces/Property';
 import PropertyComponent from '../components/Property';
 

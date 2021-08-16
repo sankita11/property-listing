@@ -12,7 +12,7 @@ export default {
   database: "property-rentals",
   synchronize: true,
   migrationsRun: true,
-  logging: true,
+  logging: false,
   autoReconnect: true,
   reconnectTries: Number.MAX_VALUE,
   reconnectInterval: 2000,

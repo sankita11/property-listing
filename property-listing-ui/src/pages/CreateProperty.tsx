@@ -5,11 +5,11 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { useMutation, useQuery } from '@apollo/client';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, withRouter } from 'react-router-dom';
 import {
   Address, Feature, Property, PropertyType,
 } from '../interfaces/Property';
-import { CREATE_PROPERTY, GET_PROPERTY_TYPES } from '../grapql/Queries';
+import { CREATE_PROPERTY, GET_PROPERTY_TYPES } from '../graphql/Queries';
 
 const CreateProperty: React.FC = () => {
   const history = useHistory();
@@ -239,7 +239,7 @@ const CreateProperty: React.FC = () => {
 
           <div className="d-flex flex-row justify-content-between">
             <div className="mb-3 flex-column">
-              <label htmlFor="monthlyRent" className="form-label">Monthly rent</label>
+              <label htmlFor="monthlyRent" className="form-label">Monthly rent(£)</label>
               <input
                 name="monthlyRent"
                 onChange={handleMonthlyRent}
@@ -278,4 +278,4 @@ const CreateProperty: React.FC = () => {
   );
 };
 
-export default CreateProperty;
+export default withRouter(CreateProperty);

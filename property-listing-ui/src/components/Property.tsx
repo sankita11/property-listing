@@ -20,20 +20,34 @@ const PropertyComponent: React.FC<PropertyProp> = ({
       <div className="d-flex flex-column p-3">
         <h4 className="my-2">
           <strong>
-            {
-              selectedProperty !== undefined && selectedProperty.length > 0 && (
-              <em>{selectedProperty[0].propertyType}</em>
-              )
-            }
-
+            <em>
+              {propertyItem.address.flatNumber ? `${propertyItem.address.flatNumber} ` : '' }
+              { propertyItem.address.addressLine1 ? propertyItem.address.addressLine1 : ''}
+            </em>
           </strong>
 
         </h4>
         <p className="card-text my-0">
-          {propertyItem.address.flatNumber ? `${propertyItem.address.flatNumber} ` : '' }
-          { propertyItem.address.addressLine1 ? propertyItem.address.addressLine1 : ''}
+          {
+              selectedProperty !== undefined && selectedProperty.length > 0 && (
+              <span>{selectedProperty[0].propertyType}</span>
+              )
+            }
+
         </p>
         <p className="my-0"><em>{propertyItem.propertyDescription}</em></p>
+        <p className="my-0">
+          Rent PCM (Monthly):
+          {' '}
+          £
+          {propertyItem.monthlyRent}
+
+        </p>
+        <p className="my-0">
+          Move In Date:
+          {' '}
+          {propertyItem.moveInDate}
+        </p>
       </div>
     </div>
 

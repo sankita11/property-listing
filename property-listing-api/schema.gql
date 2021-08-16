@@ -34,7 +34,10 @@ type Feature {
 }
 
 type Mutation {
+  """Create property"""
   propertyCreate(data: PropertyInputType!): Property!
+
+  """Update property"""
   propertyUpdate(data: PropertyInputType!): Property!
 }
 
@@ -72,7 +75,7 @@ type Property {
   propertyTypeID: Int!
 
   """Updated property on this date"""
-  updatedAt: String!
+  updatedAt: DateTime!
 }
 
 """Property and property feature relationships"""
@@ -95,6 +98,7 @@ input PropertyFeatureInput {
 
 input PropertyInputType {
   address: AddressInput!
+  coverImageUrl: String!
   id: Int
   monthlyRent: Int!
   moveInDate: DateTime!
@@ -115,7 +119,11 @@ type PropertyType {
 
 type Query {
   features: [Feature!]!
+
+  """List of properties"""
   properties: [Property!]!
-  property(id: Float!): [Property!]!
+
+  """Get property by ID"""
+  property(id: Float!): Property!
   propertyTypes: [PropertyType!]!
 }

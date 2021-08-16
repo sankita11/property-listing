@@ -1,25 +1,29 @@
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql } from 'apollo-server-express';
+import { buildSchema } from 'type-graphql';
 import { Property } from '../../../src/db/model/Property';
+import { PropertyResolver } from '../../graphql/resolvers/Property';
 
-export const createServer = () => {
+export const createServer = async () => {
     // graphql schema definition
     const typeDefs = gql`
     type Property{
-        id
-        propertyTypeID
-        numberOfBedrooms
-        numberOfBathrooms
-        monthlyRent
-        moveInDate
-        propertyDescription
-        coverImageUrl
-        createdAt
-        updatedAt
+        id: ID!
+        monthlyRent: Int!
+        moveInDate: String!
+        numberOfBathrooms: Int!
+        numberOfBedrooms: Int!
+        propertyDescription: String!
+        propertyTypeID: Int!
+        updatedAt: String!
+        coverImageUrl: String!
+        createdAt: String!
       }
         type Query {
           property(id: ID): Property
         }
       `;
+
+     
   
     // static list of properties
     const properties: Property[]  = [
@@ -42,15 +46,25 @@ export const createServer = () => {
         }
     ];
   
-    // resolvers: to map queries & mutation to actual functions
-    const resolvers = {
-      Query: {
-        property: (parent, { id }) => (id ? properties.filter(t => t.id === id) : properties)
-      },
-    };
+    // // resolvers: to map queries & mutation to actual functions
+    // const resolvers = {
+    //   Query: {
+    //     property: (id: number) => (id ? properties.filter(t => t.id === id) : properties)
+    //   },
+    // };
   
-    const server = new ApolloServer({ typeDefs, resolvers });
+    // const server = new ApolloServer({ typeDefs, resolvers });
   
+    const schema = await buildSchema({
+      resolvers: [PropertyResolver],
+      emitSchemaFile: true,
+      validate: false,
+    });
+  
+    
+    const server = new ApolloServer({schema});
+   
+
     return server;
   };
   

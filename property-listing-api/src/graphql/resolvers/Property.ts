@@ -6,7 +6,7 @@ import { ErrorMessage } from "../../db/model/Error";
   
 @Resolver(_of => Property)
 export class PropertyResolver {
-    @Query(() => [Property])
+    @Query(() => [Property], { description: "List of properties" })
     async properties(){
       try{
         return await getAllPropertyList();
@@ -18,7 +18,7 @@ export class PropertyResolver {
       
     };
 
-    @Query(() => [Property])
+    @Query(() => Property, { description: "Get property by ID" })
     async property(@Arg("id") id: number){
       try{
         return await getPropertyByID(id)
@@ -30,7 +30,7 @@ export class PropertyResolver {
      
     };
   
-    @Mutation(() => Property)
+    @Mutation(() => Property, { description: "Create property" })
     async propertyCreate(@Arg("data") propertyInput: PropertyInputType): Promise<Property | undefined | ErrorMessage> { 
       try{
         const property = (await insertProperty(propertyInput))
@@ -43,7 +43,7 @@ export class PropertyResolver {
       
     };
 
-    @Mutation(() => Property)
+    @Mutation(() => Property, { description: "Update property" })
     async propertyUpdate(@Arg("data") propertyInput: PropertyInputType): Promise<Property | undefined | ErrorMessage> { 
       try{
         const property = (await updateProperty(propertyInput))

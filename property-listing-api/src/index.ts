@@ -11,8 +11,6 @@ import {DBConnect} from "./db/config";
 import { PropertyTypesResolver } from "./graphql/resolvers/PropertyTypes";
 import { FeatureResolver } from "./graphql/resolvers/Feature";
 
-
-
 const main = async () => {
   
   const schema = await buildSchema({
@@ -21,12 +19,11 @@ const main = async () => {
     validate: false,
   });
 
-  
   await DBConnect();
-  
   
   const server = new ApolloServer({schema});
   await server.start();
+
   const app: express.Application = express();
   server.applyMiddleware({app});
   
@@ -39,7 +36,7 @@ const main = async () => {
     port = 4000;
   }
   app.listen(port, () => {
-    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+    console.log(`Server ready at http://localhost:4000${server.graphqlPath}`);
   });
   
 }
@@ -48,4 +45,5 @@ main().catch((error)=>{
   console.log(error, 'error');
 })
 
+export default main;
 

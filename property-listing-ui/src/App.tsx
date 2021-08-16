@@ -14,7 +14,7 @@ const App: React.FC = () => {
   });
 
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh>
       <ApolloProvider client={client}>
         <div className="App bg-light d-flex flex-column">
           <nav className="navbar bg-white">
